@@ -4,7 +4,7 @@ foreach (var a in ar)
 {
     Console.WriteLine("Marks"+ a);
 }
-
+//output = {325, 299, 296};
 ===========================
 
 public int[] getTotalMarks()
