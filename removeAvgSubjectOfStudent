@@ -1,0 +1,72 @@
+int [] ar=p.getTotalMarks();
+
+foreach (var a in ar)
+{
+    Console.WriteLine("Marks"+ a);
+}
+
+===========================
+
+public int[] getTotalMarks()
+{
+    int[,] marks = {
+            { 75, 76, 65, 87, 87 },
+            { 78, 76, 68, 56, 89 },
+            { 67, 87, 78, 77, 65 }
+            };
+    int N = 3;
+    int M = 5;
+    int[] totalMarksBySubject = new int[M];
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+        {
+            //Console.WriteLine(marks[i, j]);
+            totalMarksBySubject[j] += marks[i, j];
+        }
+    }
+    Console.WriteLine("Total Marks"+totalMarksBySubject);
+    // find average of M
+
+    double[] averageMarks = new double[M];
+
+    for (int i = 0; i < totalMarksBySubject.Length; i++)
+    {
+        averageMarks[i] = totalMarksBySubject[i] / N;
+    }
+
+    //Console.WriteLine("Average Marks"+averageMarks);
+
+    // find index of lowest average
+
+    int index = 0;
+    for (int i = 0; i < averageMarks.Length - 1; i++)
+    {
+        if (averageMarks[i] > averageMarks[i + 1])
+        {
+            index = i + 1;
+        }
+    }
+    //Console.WriteLine("Lowest Index"+index);
+
+    // exclude lowest index from M
+
+    int[] TotalMarks = new int[N];
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+        {
+            if (j != index)
+            {
+                TotalMarks[i] += marks[i, j];
+            }
+        }
+    }
+
+    foreach (var a in TotalMarks)
+    {
+        Console.WriteLine("Marks"+a);
+    }
+    return TotalMarks;
+}
