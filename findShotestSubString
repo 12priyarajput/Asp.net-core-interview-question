@@ -1,0 +1,52 @@
+private void findShotestSubString()
+{
+    string s = "My Name is Fran";
+    string word = "rim";
+    string tempword = "rim";
+    //string s = "I am the greatest";
+    //string word = "Imt";
+    //string tempword = "Imt";
+    string output = s;
+    string temp = "";
+    bool flag = false;
+    for (int i = 0; i < s.Length; i++)
+    {
+        string val = s[i].ToString();
+        if (tempword == "")
+        {
+            tempword = word;
+            flag = false;
+            if (temp.Length < output.Length)
+            {
+                output = temp;
+            }
+        }
+        for (int j = 0; j < tempword.Length; j++)
+        {
+            string val1 = tempword[j].ToString();
+            if (s[i] == tempword[j])
+            {
+                flag = true;
+                for (int k = 0; k < tempword.Length; k++)
+                {
+                    if (s[i] == tempword[k])
+                    {
+                        tempword = tempword.Remove(k, 1);
+                    }
+                }
+                break;
+            }
+        }
+        if (flag)
+        {
+            temp += s[i];
+        }                
+    }
+    if (temp.Length < output.Length)
+    {
+        output = temp;
+    }
+    //me is Fr
+    //I am t
+    Console.WriteLine(output);
+}
